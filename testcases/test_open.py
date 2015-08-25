@@ -10,11 +10,11 @@ from module import module_cam_open
 class TestCamOpen(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        ctr_shell.remove_file('result.xml')
+        ctr_shell.execute('rm -rf result.xml')
         # ctr_shell.open_miniterm()
     def setUp(self):
         # remove result file
-        ctr_shell.remove_file('result')
+        ctr_shell.execute('rm -rf result')
 
     def test_upper(self):
         self.assertEqual('foo'.upper(), 'FOO')
@@ -33,7 +33,7 @@ class TestCamOpen(unittest.TestCase):
         # get log
         ctr_shell.adb_pull()
         # check log
-        ctr_shell.print_file('result')
+        ctr_shell.execute('cat result')
         # compare expect
         self.assertEqual('A1 OPEN', module_cam_open.a1_preview_sw)
 
