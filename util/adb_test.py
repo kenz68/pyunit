@@ -1,5 +1,5 @@
 __author__ = 'quocle'
-from util.adb import ADB
+from testcases.adb import ADB
 debug = ADB()
 
 print debug.devices()

@@ -11,7 +11,7 @@ class TestCamOpen(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         ctr_shell.remove_file('result.xml')
-        ctr_shell.open_miniterm()
+        # ctr_shell.open_miniterm()
     def setUp(self):
         # remove result file
         ctr_shell.remove_file('result')
