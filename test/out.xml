@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="1" time="0.777"><testcase classname="multy_subprocess.TestCamOpen" name="test_split" time="0.379812002182"><system-out>adb shell
+ls -l
+total 32
+-rw-r--r--  1 quocle  staff   22 Aug 25 10:55 __init__.py
+-rw-r--r--  1 quocle  staff  171 Aug 25 11:07 __init__.pyc
+drwxr-xr-x  3 quocle  staff  102 Aug 25 11:22 __pycache__
+-rw-r--r--  1 quocle  staff  340 Aug 25 11:22 multy_subprocess.py
+-rw-r--r--  1 quocle  staff  521 Aug 25 11:14 out.xml
+</system-out><system-err>error: device not found
+</system-err></testcase></testsuite>

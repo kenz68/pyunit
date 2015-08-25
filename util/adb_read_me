@@ -1,0 +1,66 @@
+How to use
+
+First, you need to import adb.py library
+
+from adb import ADB
+Then, create your debug object
+
+debug = ADB()
+After you created debug object, you can use it to execute adb commands.
+
+Examples
+
+List all connected devices
+
+print debug.devices()
+Click POWER button to turn on screen
+
+debug.call("shell input keyevent 26")
+Upload a file to Device
+
+debug.upload("D:/data.zip","/sdcard/dataCopied.zip")
+Download a file from Device
+
+debug.get("/sdcard/Download/arduino.pdf","D:/Books/Adruino.pdf")
+Install APK file to Device
+
+debug.install("D:/Games/com.gamarist.murimuri-jump.apk")
+or
+
+debug.install(("-r", "D:/Games/com.gamarist.number-tower.apk"))
+Uninstall an application on device
+
+debug.uninstall("com.colrist.kimchi")
+Clear application data
+
+debug.clearData("com.gamarist.murimuri")
+Run an application
+
+debug.start("com.gamarist.murimuri/.MainActivity")
+or
+
+debug.start(("com.gamarist.murimuri","MainActivity"))
+Kill an application
+
+debug.kill("com.gamarist.murimuri")
+Execute shell command
+
+debug.shell("input swipe 50 50 200 50")
+Change screen resolution This is useful to test your application in multiple screen size
+
+debug.screen("800x400")
+To return to default resolution
+
+debug.screen("reset")
+Change screen DPI
+
+debug.dpi("160")
+Record screen to video file
+
+debug.screenRecord("/sdcard/record/output.mp4")
+By default, the recording will stop after 3 minutes. If you want to set the recording time, add a time parameter in seconds
+
+debug.screenRecord(("60", "/sdcard/record/output.mp4"))
+Take screenshot and save to local
+
+debug.screenShot("D:/saved.png")

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="4" time="1.297"><testcase classname="test_open.TestCamOpen" name="test_isupper" time="0.135104179382"><system-out>(&apos;rm -f %s&apos;, &apos;result.xml&apos;)
+adb shell &quot;miniterm -s 115200 /dev/ttyHSL1 &gt; /sdcard/result&quot; &amp;
+(&apos;rm -f %s&apos;, &apos;result&apos;)
+</system-out><system-err>error: device not found
+</system-err></testcase><testcase classname="test_open.TestCamOpen" name="test_open_a1_preview_sw" time="0.634477138519"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
+python camera_script.py -c a1 -o sw -u preview
+rm -f result
+adb pull /sdcard/result
+(&apos;cat %s&apos;, &apos;result&apos;)
+</system-out><system-err>python: can&apos;t open file &apos;camera_script.py&apos;: [Errno 2] No such file or directory
+error: device not found
+cat: %s: No such file or directory
+</system-err></testcase><testcase classname="test_open.TestCamOpen" name="test_split" time="0.110160112381"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
+</system-out></testcase><testcase classname="test_open.TestCamOpen" name="test_upper" time="0.112179994583"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
+</system-out></testcase></testsuite>
