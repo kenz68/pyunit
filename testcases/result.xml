@@ -1,15 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="4" time="1.297"><testcase classname="test_open.TestCamOpen" name="test_isupper" time="0.135104179382"><system-out>(&apos;rm -f %s&apos;, &apos;result.xml&apos;)
-adb shell &quot;miniterm -s 115200 /dev/ttyHSL1 &gt; /sdcard/result&quot; &amp;
-(&apos;rm -f %s&apos;, &apos;result&apos;)
-</system-out><system-err>error: device not found
-</system-err></testcase><testcase classname="test_open.TestCamOpen" name="test_open_a1_preview_sw" time="0.634477138519"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="4" name="pytest" skips="0" tests="8" time="26.850"><testcase classname="test_open_hw.TestCamOpenHW" name="test_isupper" time="1.01075410843"><system-out>rm -rf result.xml
+rm -rf result.txt
+</system-out></testcase><testcase classname="test_open_hw.TestCamOpenHW" name="test_open_a1_preview_sw" time="4.70222496986"><system-out>rm -rf result.txt
 python camera_script.py -c a1 -o sw -u preview
+adb shell &quot;echo 6 0x312f 0x00 0x00 0x02 0x00 0x00 0x02 &gt; /sys/class/light_ccb/i2c_interface/i2c_w&quot;
 rm -f result
-adb pull /sdcard/result
-(&apos;cat %s&apos;, &apos;result&apos;)
-</system-out><system-err>python: can&apos;t open file &apos;camera_script.py&apos;: [Errno 2] No such file or directory
+adb pull /sdcard/result .  
+</system-out><system-err>error: device not found
 error: device not found
-cat: %s: No such file or directory
-</system-err></testcase><testcase classname="test_open.TestCamOpen" name="test_split" time="0.110160112381"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
-</system-out></testcase><testcase classname="test_open.TestCamOpen" name="test_upper" time="0.112179994583"><system-out>(&apos;rm -f %s&apos;, &apos;result&apos;)
-</system-out></testcase></testsuite>
+</system-err></testcase><testcase classname="test_open_hw.TestCamOpenHW" name="test_sc_open_hw_a1" time="4.14742398262"><failure message="IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;">self = &lt;testcases.test_open_hw.TestCamOpenHW testMethod=test_sc_open_hw_a1&gt;
+
+    def test_sc_open_hw_a1(self):
+        # open a1 hw preview
+        ctr_shell.execute(module_command_cam_open.sc_open_hw_a1)
+        # get log
+        ctr_shell.adb_pull()
+        # show log
+&gt;       log = ctr_shell.get_log(&apos;resutl.txt&apos;)
+
+test_open_hw.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+fname = &apos;resutl.txt&apos;
+
+    def get_log(fname):
+&gt;       f = open(fname, &apos;r&apos;)
+E       IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;
+
+../controller/ctr_shell.py:19: IOError</failure><system-out>rm -rf result.txt
+python camera_script.py -c a1 -o hw -u preview
+adb shell &quot;echo 6 0x5203 0x00 0x00 0x02 0x00 0x00 0x01 &gt; /sys/class/light_ccb/i2c_interface/i2c_w&quot;
+rm -f result
+adb pull /sdcard/result .  
+</system-out><system-err>error: device not found
+error: device not found
+</system-err></testcase><testcase classname="test_open_hw.TestCamOpenHW" name="test_split" time="1.01153612137"><system-out>rm -rf result.txt
+</system-out></testcase><testcase classname="test_open_hw.TestCamOpenHW" name="test_upper" time="1.00729799271"><system-out>rm -rf result.txt
+</system-out></testcase><testcase classname="test_open_sw.TestCamOpenSW" name="test_sc_open_sw_a1" time="4.13377594948"><failure message="IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;">self = &lt;testcases.test_open_sw.TestCamOpenSW testMethod=test_sc_open_sw_a1&gt;
+
+    def test_sc_open_sw_a1(self):
+        # open a1 sw preview
+        ctr_shell.execute(module_command_cam_open.sc_open_sw_a1)
+        # get log
+        ctr_shell.adb_pull()
+        # show log
+&gt;       log = ctr_shell.get_log(&apos;resutl.txt&apos;)
+
+test_open_sw.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+fname = &apos;resutl.txt&apos;
+
+    def get_log(fname):
+&gt;       f = open(fname, &apos;r&apos;)
+E       IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;
+
+../controller/ctr_shell.py:19: IOError</failure><system-out>rm -rf result.xml
+rm -rf result.txt
+python camera_script.py -c a1 -o sw
+adb shell &quot;echo 6 0xa52e 0x00 0x00 0x02 0x00 0x00 0x02 &gt; /sys/class/light_ccb/i2c_interface/i2c_w&quot;
+rm -f result
+adb pull /sdcard/result .  
+</system-out><system-err>error: device not found
+error: device not found
+</system-err></testcase><testcase classname="test_open_sw.TestCamOpenSW" name="test_sc_open_sw_b1" time="4.14294815063"><failure message="IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;">self = &lt;testcases.test_open_sw.TestCamOpenSW testMethod=test_sc_open_sw_b1&gt;
+
+    def test_sc_open_sw_b1(self):
+        # open a1 sw preview
+        ctr_shell.execute(module_command_cam_open.sc_open_sw_b1)
+        # get log
+        ctr_shell.adb_pull()
+        # show log
+&gt;       log = ctr_shell.get_log(&apos;resutl.txt&apos;)
+
+test_open_sw.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+fname = &apos;resutl.txt&apos;
+
+    def get_log(fname):
+&gt;       f = open(fname, &apos;r&apos;)
+E       IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;
+
+../controller/ctr_shell.py:19: IOError</failure><system-out>rm -rf result.txt
+python camera_script.py -c b1 -o sw
+adb shell &quot;echo 6 0xb313 0x00 0x00 0x40 0x00 0x00 0x02 &gt; /sys/class/light_ccb/i2c_interface/i2c_w&quot;
+rm -f result
+adb pull /sdcard/result .  
+</system-out><system-err>error: device not found
+error: device not found
+</system-err></testcase><testcase classname="test_open_sw.TestCamOpenSW" name="test_sc_open_sw_c1" time="4.14028906822"><failure message="IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;">self = &lt;testcases.test_open_sw.TestCamOpenSW testMethod=test_sc_open_sw_c1&gt;
+
+    def test_sc_open_sw_c1(self):
+        # open a1 sw preview
+        ctr_shell.execute(module_command_cam_open.sc_open_sw_c1)
+        # get log
+        ctr_shell.adb_pull()
+        # show log
+&gt;       log = ctr_shell.get_log(&apos;resutl.txt&apos;)
+
+test_open_sw.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+fname = &apos;resutl.txt&apos;
+
+    def get_log(fname):
+&gt;       f = open(fname, &apos;r&apos;)
+E       IOError: [Errno 2] No such file or directory: &apos;resutl.txt&apos;
+
+../controller/ctr_shell.py:19: IOError</failure><system-out>rm -rf result.txt
+python camera_script.py -c c1 -o sw
+adb shell &quot;echo 6 0x4040 0x00 0x00 0x00 0x08 0x00 0x02 &gt; /sys/class/light_ccb/i2c_interface/i2c_w&quot;
+rm -f result
+adb pull /sdcard/result .  
+</system-out><system-err>error: device not found
+error: device not found
+</system-err></testcase></testsuite>

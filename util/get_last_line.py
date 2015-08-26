@@ -1,7 +1,7 @@
 from __future__ import with_statement
 
 s = 'failure message="Error"'                    # String to find
-fname = 'output.xml'                             # File to check
+fname = 'result.xml'                             # File to check
 
 def get_n_last_lines( fname, n):
 
