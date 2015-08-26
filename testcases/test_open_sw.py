@@ -9,21 +9,21 @@ from util import util
 from util import get_last_line
 
 class TestCamOpenSW(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        ctr_shell.execute('rm -rf result.xml')
+   # @classmethod
+    # def setUpClass(cls):
+        # ctr_shell.execute('rm -rf result.xml')
         # ctr_shell.open_miniterm()
-    def setUp(self):
+    # def setUp(self):
         # remove result file
-        ctr_shell.execute('rm -rf result.txt')
+        # ctr_shell.execute('rm -rf result.txt')
 
     def test_sc_open_sw_a1(self):
         # open a1 sw preview
         ctr_shell.execute(module_command_cam_open.sc_open_sw_a1)
         # get log
-        ctr_shell.adb_pull()
+        # ctr_shell.adb_pull()
         # show log
-        log = ctr_shell.get_log('resutl.txt')
+        log = ctr_shell.get_log('result.txt')
         # get 50 last info
         info = get_last_line.get_n_last_lines('result.txt', 50)
         infos = util.get_last_elements(25, info)
@@ -34,9 +34,9 @@ class TestCamOpenSW(unittest.TestCase):
         # open a1 sw preview
         ctr_shell.execute(module_command_cam_open.sc_open_sw_b1)
         # get log
-        ctr_shell.adb_pull()
+        # ctr_shell.adb_pull()
         # show log
-        log = ctr_shell.get_log('resutl.txt')
+        log = ctr_shell.get_log('result.txt')
         # get 50 last info
         info = get_last_line.get_n_last_lines('result.txt', 50)
         infos = util.get_last_elements(25, info)
@@ -47,9 +47,9 @@ class TestCamOpenSW(unittest.TestCase):
         # open a1 sw preview
         ctr_shell.execute(module_command_cam_open.sc_open_sw_c1)
         # get log
-        ctr_shell.adb_pull()
+        # ctr_shell.adb_pull()
         # show log
-        log = ctr_shell.get_log('resutl.txt')
+        log = ctr_shell.get_log('result.txt')
         # get 50 last info
         info = get_last_line.get_n_last_lines('result.txt', 50)
         infos = util.get_last_elements(25, info)

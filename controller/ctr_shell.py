@@ -10,7 +10,7 @@ def execute(shell_string):
 
 def adb_pull():
     execute('rm -f result')
-    execute('adb pull /sdcard/result .  ')
+    execute('adb pull /sdcard/result.txt .  ')
 
 def open_miniterm():
     execute('adb shell "miniterm -s 115200 /dev/ttyHSL1 > /sdcard/result" &')
